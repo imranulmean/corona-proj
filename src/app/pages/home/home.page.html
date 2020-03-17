@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar id="topToolbar">
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <img src="../../../assets/img/logo-200.png" height="35">
+    </ion-buttons>
+
+    <ion-title>
+      <ion-label color="light">
+        <p><b>{{nowTime}}</b></p>
+      </ion-label>
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<!-- Default Segment -->
+  <ion-toolbar id="segmentToolbar" (pan)="panToFirstSeg($event)">
+      <ion-segment no-padding value="home" [(ngModel)]="category" scrollable id="segment" > 
+
+          <ion-segment-button id={{result.id}} *ngFor="let result of segmentOptions" (click)="clickSegment(result)" no-padding value={{result.value}} >
+            <ion-label>{{result.label}}</ion-label>
+          </ion-segment-button>      
+        <hr class="hrs">
+      </ion-segment>
+  </ion-toolbar>
+
+
+<ion-content (swipeleft)="swipeLeftPress($event)" (swiperight)="swipeRightPress($event)" class="fast" id="ionContent">
+  <!-- Home section -->
+  <div scrollable>
+        <!-- Home ends -->
+    <!-- Videos news -->
+    <ion-list>
+      <div *ngFor="let result of apiResult">
+        <ion-card (click)=goToYoutube(result.id.videoId)>
+          <ion-card-header>
+            <!-- <ion-badge>ভিডিও নিউজ</ion-badge> -->
+            <img *ngIf="result.snippet.thumbnails" src="{{result.snippet.thumbnails.high.url}}" />
+            <img *ngIf="!result.snippet.thumbnails" src="assets/img/news_fallback.png" />
+            <ion-card-subtitle color="dark" class="sectionTitle" *ngIf="result.snippet.title" 
+            [innerHtml]="result.snippet.title">
+            </ion-card-subtitle>
+          </ion-card-header>
+        </ion-card>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>
