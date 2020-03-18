@@ -21,12 +21,9 @@ export class NewsService {
   segmentOptions:any=[];
 
   /////////////////////////////// Firebase  //////////////////////////////
-  
-  private channelCollection: AngularFirestoreCollection<Channel>;
-  private featuredGamesCollection: AngularFirestoreCollection<Channel>;
-  private channels: Observable<Channel[]>;
-  private featuredGames: Observable<Channel[]>;
-  private featuredChannel:any;
+  // https://www.googleapis.com/youtube/v3/videos?id=bwSr5n9qFPM&key=AIzaSyApCtHtDdnp6z11bnYGJwdGj2N4i8NfHx0&part=snippet
+  private coronaCollection: AngularFirestoreCollection<Channel>;
+  private coronaVidoes: Observable<Channel[]>;
 
   /////////////////////////////// Firebase  //////////////////////////////
   headers: any = new HttpHeaders({
@@ -42,10 +39,9 @@ export class NewsService {
       
     ];
     ///////////////////////////Firebase //////////////////////
-    this.channelCollection = db.collection<Channel>('allChannels'); 
-    this.featuredGamesCollection = db.collection<Channel>('Featured Games');
+    this.coronaCollection = db.collection<Channel>('coronaDoc'); 
 
-      this.channels = this.channelCollection.snapshotChanges().pipe(
+      this.coronaVidoes = this.coronaCollection.snapshotChanges().pipe(
         map(actions => {
           return actions.map(a => {
             const data = a.payload.doc.data();
@@ -54,16 +50,6 @@ export class NewsService {
           });
         })
       );
-
-      this.featuredGames = this.featuredGamesCollection.snapshotChanges().pipe(
-        map(actions => {
-          return actions.map(a => {
-            const data = a.payload.doc.data();
-            const id = a.payload.doc.id;
-            return { id, ...data };
-          });
-        })
-      );    
     //////////////////////////Firebase ///////////////////////    
 
   }
@@ -72,12 +58,9 @@ export class NewsService {
     return this.segmentOptions;
   }
   getChannels() {
-    return this.channels;
-  } 
-  getFeaturedGames() {
-    return this.featuredGames;
-  }  
- 
+    return this.coronaVidoes;
+  }
+  
 
 
   // getAllShareMarketPosts(page) {

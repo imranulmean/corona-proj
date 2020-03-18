@@ -34,13 +34,12 @@
     <!-- Videos news -->
     <ion-list>
       <div *ngFor="let result of apiResult">
-        <ion-card (click)=goToYoutube(result.id.videoId)>
+        <ion-card (click)=goToYoutube(result.url)>
           <ion-card-header>
             <!-- <ion-badge>ভিডিও নিউজ</ion-badge> -->
-            <img *ngIf="result.snippet.thumbnails" src="{{result.snippet.thumbnails.high.url}}" />
-            <img *ngIf="!result.snippet.thumbnails" src="assets/img/news_fallback.png" />
-            <ion-card-subtitle color="dark" class="sectionTitle" *ngIf="result.snippet.title" 
-            [innerHtml]="result.snippet.title">
+            <img src="{{result.img}}" />
+            <ion-card-subtitle color="dark" class="sectionTitle"
+            [innerHtml]="result.title">
             </ion-card-subtitle>
           </ion-card-header>
         </ion-card>

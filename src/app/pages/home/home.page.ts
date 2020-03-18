@@ -6,7 +6,7 @@ import { Events } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
-
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
 // import { AdmobFreeService } from '../../services/admobfree.service';
 import { Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
@@ -30,23 +30,19 @@ export class HomePage {
   apiResult:any=[];
 
   channelsGang: Channel[];
-  featuredGang: Channel[];
 
   constructor(
     private newsApi: NewsService,
     public event: Events,
     private iab: InAppBrowser,
     public loadingController: LoadingController,
-    public platform: Platform) {
+    public platform: Platform,
+    public http: HttpClient) {
 
     this.segmentOptions = this.newsApi.getSegments();
     this.event.publish('scrollToTop', this.content);
+    this.showAutoHideLoader();
     
-    this.newsApi.getChannels().subscribe(res => {
-      this.channelsGang = res;
-      // this.loadingController.dismiss();
-      console.log(this.channelsGang);
-    });     
 
   }
 
@@ -97,6 +93,10 @@ export class HomePage {
     this.segmentWiseSwipe('right', this.currentTab);
   }
 
+  goToYoutube(url){
+    this.iab.create(url, '_self', 'location=no');
+  }
+
   clickSegment(segment) {
     this.currentTab = segment;
     // console.log(this.currentTab);
@@ -106,6 +106,51 @@ export class HomePage {
   ionViewDidEnter() {
     this.content.scrollToTop();
   }
+
+  showAutoHideLoader() {
+      this.loadingController.create({
+      spinner: 'crescent',
+      cssClass: 'loader',
+      // duration: 1000
+      }).then((res) => {
+
+        res.present();
+
+        this.newsApi.getChannels().subscribe(res => {
+          this.channelsGang = res;
+          for(let i=0;i<this.channelsGang.length;i++){
+              let videos=this.channelsGang[i]['videos'];
+              return this.youtubeApiCall(videos);
+          }                    
+        }); 
+
+        res.onDidDismiss().then((dis) => {
+        });
+      });
+    }
+
+    youtubeApiCall(videos){
+
+        for(let j=0;j<videos.length;j++){
+          let vidInfo='https://www.googleapis.com/youtube/v3/videos?id='+videos[j].vid+'&key=AIzaSyApCtHtDdnp6z11bnYGJwdGj2N4i8NfHx0&part=snippet'; 
+            this.http.get(vidInfo).subscribe((res)=>{
+              // console.log(res)
+              // console.log(res['items'][0]['snippet']['title'])
+              //  console.log(res['items'][0]['snippet']['thumbnails']['default']['url'])
+              // console.log(videos[j].url);
+              this.loadingController.dismiss();
+            let obj={
+                  title:res['items'][0]['snippet']['title'],
+                  img:res['items'][0]['snippet']['thumbnails']['standard']['url'],
+                  url:videos[j].url
+            }
+              this.apiResult.push(obj);
+              
+              // console.log(res);
+
+          })
+        }      
+    }
 
   // getTechPosts() {
   //   this.newsApi.getAllTechPosts(this.pageNumber).subscribe(result => {
