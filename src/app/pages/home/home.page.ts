@@ -41,7 +41,7 @@ export class HomePage {
 
     this.segmentOptions = this.newsApi.getSegments();
     this.event.publish('scrollToTop', this.content);
-    this.showAutoHideLoader();
+     this.showAutoHideLoader('home');
     
 
   }
@@ -64,8 +64,6 @@ export class HomePage {
   }
 
   swipeLeftPress($event) {
-    console.log('swipeLeftPress', $event);
-    console.log(this.category);
     for (let i = 0; i < this.segmentOptions.length; i++) {
       if (this.segmentOptions[i]['value'] === this.category) {
         this.currentTab = this.segmentOptions[i + 1];
@@ -100,14 +98,14 @@ export class HomePage {
   clickSegment(segment) {
     this.currentTab = segment;
     // console.log(this.currentTab);
-    eval(segment.click);
+    // eval(segment.click);
   }
 
   ionViewDidEnter() {
     this.content.scrollToTop();
   }
 
-  showAutoHideLoader() {
+  showAutoHideLoader(option) {
       this.loadingController.create({
       spinner: 'crescent',
       cssClass: 'loader',
@@ -116,48 +114,66 @@ export class HomePage {
 
         res.present();
 
-        this.newsApi.getChannels().subscribe(res => {
-          this.channelsGang = res;
-          for(let i=0;i<this.channelsGang.length;i++){
-              let videos=this.channelsGang[i]['videos'];
-              return this.youtubeApiCall(videos);
-          }                    
-        }); 
+        if(option==="home"){
+          this.newsApi.coronaIntro().subscribe(res => {
+            this.channelsGang = res;
+            this.prepareCall();                  
+          });           
+        }
+
+        else if(option==="symtoms"){
+          this.newsApi.coronaSymptomsVideos().subscribe(res => {
+            this.channelsGang = res;
+            this.prepareCall();                  
+          });            
+        } 
+
+        else if(option==="prevention"){
+          this.newsApi.coronaPreventionVideos().subscribe(res => {
+            this.channelsGang = res;
+            this.prepareCall();                  
+          });          
+        }               
+
 
         res.onDidDismiss().then((dis) => {
         });
       });
     }
 
-    youtubeApiCall(videos){
-
-        for(let j=0;j<videos.length;j++){
-          let vidInfo='https://www.googleapis.com/youtube/v3/videos?id='+videos[j].vid+'&key=AIzaSyApCtHtDdnp6z11bnYGJwdGj2N4i8NfHx0&part=snippet'; 
-            this.http.get(vidInfo).subscribe((res)=>{
-              // console.log(res)
-              // console.log(res['items'][0]['snippet']['title'])
-              //  console.log(res['items'][0]['snippet']['thumbnails']['default']['url'])
-              // console.log(videos[j].url);
-              this.loadingController.dismiss();
-            let obj={
-                  title:res['items'][0]['snippet']['title'],
-                  img:res['items'][0]['snippet']['thumbnails']['standard']['url'],
-                  url:videos[j].url
-            }
-              this.apiResult.push(obj);
-              
-              // console.log(res);
-
-          })
-        }      
+    prepareCall(){
+      this.apiResult=[];
+        for(let i=0;i<this.channelsGang.length;i++){
+            let videos=this.channelsGang[i]['videos'];
+            return this.youtubeApiCall(videos,this.http,this.loadingController,this.apiResult);
+        }       
     }
+    youtubeApiCall(videos,http,loadingController,apiResult){
 
-  // getTechPosts() {
-  //   this.newsApi.getAllTechPosts(this.pageNumber).subscribe(result => {
-  //     this.apiResult(result);
-  //   });
+      ///////////////////////////
+          (async function() {
+            for await (let v of videos) {
+              // console.log(v);
+              let vidInfo='https://www.googleapis.com/youtube/v3/videos?id='+v.vid+'&key=AIzaSyApCtHtDdnp6z11bnYGJwdGj2N4i8NfHx0&part=snippet'; 
+                http.get(vidInfo).subscribe((res)=>{
+                   // console.log(res)
+                  // console.log(res['items'][0]['snippet']['title'])
+                  //  console.log(res['items'][0]['snippet']['thumbnails']['default']['url'])
+                  // console.log(videos[j].url);
+                  loadingController.dismiss();
+                let obj={
+                      title:res['items'][0]['snippet']['title'],
+                      img:res['items'][0]['snippet']['thumbnails']['standard']['url'],
+                      url:v.url
+                }
+                  apiResult.push(obj);
+                  
+                  // console.log(res);
 
+              })              
 
-  // }
+            }
+          })();      
+    }
 
 }

@@ -19,7 +19,8 @@
   <ion-toolbar id="segmentToolbar" (pan)="panToFirstSeg($event)">
       <ion-segment no-padding value="home" [(ngModel)]="category" scrollable id="segment" > 
 
-          <ion-segment-button id={{result.id}} *ngFor="let result of segmentOptions" (click)="clickSegment(result)" no-padding value={{result.value}} >
+          <ion-segment-button id={{result.id}} *ngFor="let result of segmentOptions" 
+          (click)='showAutoHideLoader(result.value)' no-padding value={{result.value}} >
             <ion-label>{{result.label}}</ion-label>
           </ion-segment-button>      
         <hr class="hrs">

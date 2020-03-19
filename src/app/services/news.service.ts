@@ -23,7 +23,14 @@ export class NewsService {
   /////////////////////////////// Firebase  //////////////////////////////
   // https://www.googleapis.com/youtube/v3/videos?id=bwSr5n9qFPM&key=AIzaSyApCtHtDdnp6z11bnYGJwdGj2N4i8NfHx0&part=snippet
   private coronaCollection: AngularFirestoreCollection<Channel>;
+  private coronaSymptomsCollection: AngularFirestoreCollection<Channel>;
+  private coronaPreventionCollection: AngularFirestoreCollection<Channel>;
+
+
   private coronaVidoes: Observable<Channel[]>;
+  private coronaSymptoms: Observable<Channel[]>;
+  private coronaPrevention: Observable<Channel[]>;
+  
 
   /////////////////////////////// Firebase  //////////////////////////////
   headers: any = new HttpHeaders({
@@ -35,7 +42,8 @@ export class NewsService {
   constructor(public http: HttpClient,db: AngularFirestore) {
     this.segmentOptions=[
       {value:"home",id:"0",label:"Home"},
-      {value:"Videos",id:"0",label:"Videos"}
+      {value:"symtoms",id:"1",label:"Symtoms"},
+      {value:"prevention",id:"2",label:"Prevention"}
       
     ];
     ///////////////////////////Firebase //////////////////////
@@ -50,6 +58,30 @@ export class NewsService {
           });
         })
       );
+
+    this.coronaSymptomsCollection = db.collection<Channel>('coronaSymptoms'); 
+
+      this.coronaSymptoms = this.coronaSymptomsCollection.snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );
+
+    this.coronaPreventionCollection = db.collection<Channel>('coronaPrevention'); 
+
+      this.coronaPrevention = this.coronaPreventionCollection.snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );             
     //////////////////////////Firebase ///////////////////////    
 
   }
@@ -57,9 +89,16 @@ export class NewsService {
   getSegments(){
     return this.segmentOptions;
   }
-  getChannels() {
+  coronaIntro() {
     return this.coronaVidoes;
   }
+  coronaSymptomsVideos(){
+    return this.coronaSymptoms;
+  }
+    coronaPreventionVideos(){
+    return this.coronaPrevention;
+  }
+
   
 
 
