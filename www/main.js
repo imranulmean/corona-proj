@@ -1213,7 +1213,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu type=\"overlay\">\r\n      <ion-content fullscreen>\r\n        <div class=\"sidemenu-ion-content\">\r\n          <ion-list class=\"sidemenu-ion-list\">\r\n\r\n            <ion-item class=\"sidemenu-ion-list-item\">\r\n              <img class=\"sidemenu-logo\" src=\"../assets/img/logo-200.png\" height=\"75\">\r\n            </ion-item>\r\n\r\n            <!-- <ion-menu-toggle auto-hide=\"false\">\r\n\r\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/home\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"home\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  সব খবর\r\n                </ion-label>\r\n              </ion-item>\r\n\r\n            </ion-menu-toggle> -->\r\n\r\n            <!-- Item with Children -->\r\n\r\n            <ion-item button class=\"sidemenu-ion-list-item\" (click)=\"openMenuList()\" [class.parent-active]=\"subMenu.open\" detail=\"false\"\r\n              auto-hide=\"false\">\r\n              <ion-icon slot=\"start\" name=\"arrow-forward\" color=\"light\" *ngIf=\"!subMenu.open\"></ion-icon>\r\n              <ion-icon slot=\"start\" name=\"arrow-down\" color=\"light\" *ngIf=\"subMenu.open\"></ion-icon>\r\n              <ion-label color=\"light\">News</ion-label>\r\n            </ion-item>\r\n\r\n            <!-- Children List for clicked Item -->          \r\n            <ion-list id=\"menuList\" class=\"sidemenu-ion-list-item\" *ngIf=\"subMenu.open\" style=\"height: 0;overflow-y: auto;-webkit-transition: height 2s; transition: height 1s;\">\r\n              <ion-menu-toggle>\r\n                <ion-item class=\"sub-item\" *ngFor=\"let s of subRoutes\"  (click)=\"openHome(s.id)\">\r\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\r\n                  <ion-label>\r\n                    {{s.label}}\r\n                  </ion-label>\r\n                </ion-item>              \r\n<!--                 <ion-item class=\"sub-item\"  *ngFor=\"let s of subRoutes\" [routerDirection]=\"'root'\" routerLink={{s.routeOption}}>\r\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\r\n                  <ion-label>\r\n                    {{s.routeName}}\r\n                  </ion-label>\r\n                </ion-item> -->\r\n\r\n              </ion-menu-toggle>\r\n            </ion-list>          \r\n\r\n\r\n\r\n            <ion-menu-toggle>          \r\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/sources\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"cube\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  Source\r\n                </ion-label>\r\n              </ion-item>\r\n<!--               <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/livetv\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"tv\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  পত্রিকা ও লাইভ টিভি\r\n                </ion-label>\r\n              </ion-item> -->\r\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/about\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"md-information-circle\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  About Us\r\n                </ion-label>\r\n              </ion-item>\r\n\r\n            </ion-menu-toggle>\r\n          </ion-list>\r\n        </div>\r\n      </ion-content>\r\n      <ion-footer class=\"sidemenu-ion-footer\">\r\n        <ion-label class=\"copyright-text\" color=\"dark\">© Dream Diver 2020 | Version 0.0.3</ion-label>\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>"
+module.exports = "<ion-app>\n  <ion-split-pane>\n    <ion-menu type=\"overlay\">\n      <ion-content fullscreen>\n        <div class=\"sidemenu-ion-content\">\n          <ion-list class=\"sidemenu-ion-list\">\n\n            <ion-item class=\"sidemenu-ion-list-item\">\n              <img class=\"sidemenu-logo\" src=\"../assets/img/logo-200.png\" height=\"75\">\n            </ion-item>\n\n            <!-- <ion-menu-toggle auto-hide=\"false\">\n\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/home\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"home\"></ion-icon>\n                <ion-label color=\"light\">\n                  সব খবর\n                </ion-label>\n              </ion-item>\n\n            </ion-menu-toggle> -->\n\n            <!-- Item with Children -->\n\n            <ion-item button class=\"sidemenu-ion-list-item\" (click)=\"openMenuList()\" [class.parent-active]=\"subMenu.open\" detail=\"false\"\n              auto-hide=\"false\">\n              <ion-icon slot=\"start\" name=\"arrow-forward\" color=\"light\" *ngIf=\"!subMenu.open\"></ion-icon>\n              <ion-icon slot=\"start\" name=\"arrow-down\" color=\"light\" *ngIf=\"subMenu.open\"></ion-icon>\n              <ion-label color=\"light\">News</ion-label>\n            </ion-item>\n\n            <!-- Children List for clicked Item -->          \n            <ion-list id=\"menuList\" class=\"sidemenu-ion-list-item\" *ngIf=\"subMenu.open\" style=\"height: 0;overflow-y: auto;-webkit-transition: height 2s; transition: height 1s;\">\n              <ion-menu-toggle>\n                <ion-item class=\"sub-item\" *ngFor=\"let s of subRoutes\"  (click)=\"openHome(s.id)\">\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\n                  <ion-label>\n                    {{s.label}}\n                  </ion-label>\n                </ion-item>              \n<!--                 <ion-item class=\"sub-item\"  *ngFor=\"let s of subRoutes\" [routerDirection]=\"'root'\" routerLink={{s.routeOption}}>\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\n                  <ion-label>\n                    {{s.routeName}}\n                  </ion-label>\n                </ion-item> -->\n\n              </ion-menu-toggle>\n            </ion-list>          \n\n\n\n            <ion-menu-toggle>          \n              <!-- <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/sources\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"cube\"></ion-icon>\n                <ion-label color=\"light\">\n                  Source\n                </ion-label>\n              </ion-item> -->\n<!--               <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/livetv\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"tv\"></ion-icon>\n                <ion-label color=\"light\">\n                  পত্রিকা ও লাইভ টিভি\n                </ion-label>\n              </ion-item> -->\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/about\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"md-information-circle\"></ion-icon>\n                <ion-label color=\"light\">\n                  About Us\n                </ion-label>\n              </ion-item>\n\n            </ion-menu-toggle>\n          </ion-list>\n        </div>\n      </ion-content>\n      <ion-footer class=\"sidemenu-ion-footer\">\n        <ion-label class=\"copyright-text\" color=\"dark\">© Dream Diver 2020 | Version 0.0.1</ion-label>\n      </ion-footer>\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>"
 
 /***/ }),
 
@@ -1442,6 +1442,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ionic_swipe_all__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ionic-swipe-all */ "./node_modules/ionic-swipe-all/dist/index.js");
 /* harmony import */ var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/onesignal/ngx */ "./node_modules/@ionic-native/onesignal/ngx/index.js");
 /* harmony import */ var _ionic_native_open_native_settings_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/open-native-settings/ngx */ "./node_modules/@ionic-native/open-native-settings/ngx/index.js");
+/* harmony import */ var angularfire2__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! angularfire2 */ "./node_modules/angularfire2/index.js");
+/* harmony import */ var angularfire2__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(angularfire2__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_20__);
 
 
 
@@ -1463,6 +1468,9 @@ __webpack_require__.r(__webpack_exports__);
 // import { AdMobFree } from '@ionic-native/admob-free/ngx';
 // import { AdmobFreeService } from './services/admobfree.service';
 
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -1470,7 +1478,9 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"], _moment_pipe__WEBPACK_IMPORTED_MODULE_12__["MomentPipe"]],
             entryComponents: [],
-            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"], ionic_swipe_all__WEBPACK_IMPORTED_MODULE_15__["IonicSwipeAllModule"]],
+            imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"], ionic_swipe_all__WEBPACK_IMPORTED_MODULE_15__["IonicSwipeAllModule"],
+                angularfire2__WEBPACK_IMPORTED_MODULE_18__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_19__["environment"].firebase),
+                angularfire2_firestore__WEBPACK_IMPORTED_MODULE_20__["AngularFirestoreModule"]],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -1543,8 +1553,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_add_observable_forkJoin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/add/observable/forkJoin */ "./node_modules/rxjs-compat/_esm5/add/observable/forkJoin.js");
 /* harmony import */ var _globalSettings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../globalSettings */ "./src/globalSettings.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_add_operator_catch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/add/operator/catch */ "./node_modules/rxjs-compat/_esm5/add/operator/catch.js");
-/* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! angularfire2/firestore */ "./node_modules/angularfire2/firestore/index.js");
+/* harmony import */ var angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 
 
 
@@ -1553,174 +1564,66 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NewsService = /** @class */ (function () {
-    function NewsService(http) {
+    function NewsService(http, db) {
         this.http = http;
         this.apiURL = _globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"];
-        this.jamunaTvYouTubeURL = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCPKMoCzd_WwQ6HeQAFWITwVnL1-YDBxgE&channelId=UCN6sm8iHiPd0cnoUardDAnw&part=snippet,id&order=date&maxResults=20';
-        this.independentTvYoutubeUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyCPKMoCzd_WwQ6HeQAFWITwVnL1-YDBxgE&channelId=UCATUkaOHwO9EP_W87zCiPbA&playlistId=PLb6HuVa35CcP70EwOwBvTtvK4gMFhHXBi&part=snippet,id&order=date&maxResults=20';
-        this.channel24YoutubeUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyCPKMoCzd_WwQ6HeQAFWITwVnL1-YDBxgE&channelId=UCHLqIOMPk20w-6cFgkA90jw&playlistId=PLc_kkJn0dwWtIc8TovOKm7HStcrz8KAAD&part=snippet,id&order=date&maxResults=20';
         this.data = [];
         this.segmentOptions = [];
+        /////////////////////////////// Firebase  //////////////////////////////
         this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
             'Cache-Control': 'no-cache, no-store, must-revalidate, post- check=0, pre-check=0, max-age=0, private, max-stale=0',
             Pragma: 'no-cache',
             Expires: '0'
         });
         this.segmentOptions = [
-            { value: "home", click: "this.home()", id: "0", label: "Home", src: "../../../assets/img/menu-icons/prothom-pata.svg", logo: "../assets/img/menu-icons/prothom-pata.svg" },
-            // {value:"videos",click:"this.videos()",id:"1",label:"videos",src:"../../../assets/img/menu-icons/video.svg"},
-            { value: "bangladesh", click: "this.bangladesh()", id: "2", label: "bangladesh", src: "../../../assets/img/menu-icons/bangladesh.svg", logo: "../assets/img/menu-icons/bangladesh.svg" },
-            { value: "politics", click: "this.politics()", id: "3", label: "politics", src: "../../../assets/img/menu-icons/politics.svg", logo: "../assets/img/menu-icons/politics.svg" },
-            { value: "international", click: "this.international()", id: "4", label: "international", src: "../../../assets/img/menu-icons/international.svg", logo: "../assets/img/menu-icons/international.svg" },
-            { value: "economy", click: "this.economy()", id: "5", label: "economy", src: "../../../assets/img/menu-icons/economy.svg", logo: "../assets/img/menu-icons/economy.svg" },
-            { value: "share", click: "this.share()", id: "6", label: "share", src: "../../../assets/img/menu-icons/others.svg", logo: "../../../assets/img/menu-icons/others.svg" },
-            { value: "sports", click: "this.sports()", id: "7", label: "sports", src: "../../../assets/img/menu-icons/game.svg", logo: "../assets/img/menu-icons/game.svg" },
-            { value: "entertainment", click: "this.entertainment()", id: "8", label: "entertainment", src: "../../../assets/img/menu-icons/buzz.svg", logo: "../assets/img/menu-icons/buzz.svg" },
-            { value: "tech", click: "this.tech()", id: "9", label: "tech", src: "../../../assets/img/menu-icons/science.svg", logo: "../assets/img/menu-icons/science.svg" },
-            { value: "lifeStyle", click: "this.lifeStyle()", id: "10", label: "lifeStyle", src: "../../../assets/img/menu-icons/lifestyle.svg", logo: "../assets/img/menu-icons/lifestyle.svg" },
-            { value: "education", click: "this.education()", id: "11", label: "education", src: "../../../assets/img/menu-icons/education.svg", logo: "../assets/img/menu-icons/education.svg" },
-            { value: "crime", click: "this.crime()", id: "12", label: "crime", src: "../../../assets/img/menu-icons/crime.svg", logo: "../assets/img/menu-icons/crime.svg" },
-            { value: "culture", click: "this.culture()", id: "13", label: "culture", src: "../../../assets/img/menu-icons/literature.svg", logo: "../assets/img/menu-icons/literature.svg" },
-            { value: "vivid", click: "this.vivid()", id: "14", label: "vivid", src: "../../../assets/img/menu-icons/bichitro.svg", logo: "../assets/img/menu-icons/bichitro.svg" },
-            { value: "business", click: "this.business()", id: "15", label: "business", src: "../../../assets/img/menu-icons/business.svg", logo: "../assets/img/menu-icons/business.svg" },
-            { value: "horoscope", click: "this.horoscope()", id: "16", label: "horoscope", src: "../../../assets/img/menu-icons/horoscope.svg", logo: "../assets/img/menu-icons/horoscope.svg" },
+            { value: "home", id: "0", label: "Home" },
+            { value: "symtoms", id: "1", label: "Symtoms" },
+            { value: "prevention", id: "2", label: "Prevention" }
         ];
+        ///////////////////////////Firebase //////////////////////
+        this.coronaCollection = db.collection('coronaDoc');
+        this.coronaVidoes = this.coronaCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (actions) {
+            return actions.map(function (a) {
+                var data = a.payload.doc.data();
+                var id = a.payload.doc.id;
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ id: id }, data);
+            });
+        }));
+        this.coronaSymptomsCollection = db.collection('coronaSymptoms');
+        this.coronaSymptoms = this.coronaSymptomsCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (actions) {
+            return actions.map(function (a) {
+                var data = a.payload.doc.data();
+                var id = a.payload.doc.id;
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ id: id }, data);
+            });
+        }));
+        this.coronaPreventionCollection = db.collection('coronaPrevention');
+        this.coronaPrevention = this.coronaPreventionCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (actions) {
+            return actions.map(function (a) {
+                var data = a.payload.doc.data();
+                var id = a.payload.doc.id;
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ id: id }, data);
+            });
+        }));
+        //////////////////////////Firebase ///////////////////////    
     }
     NewsService.prototype.getSegments = function () {
         return this.segmentOptions;
     };
-    /**
-     * Get all the posts
-     */
-    NewsService.prototype.getweatherReport = function (lat, long, accuracy) {
-        var apiUrl = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&units=metric&appid=40e08730efcea491d4b72d2d32656090';
-        return this.http.get(apiUrl);
+    NewsService.prototype.coronaIntro = function () {
+        return this.coronaVidoes;
     };
-    /**
-     * Jamuna Tv Youtube channel api call
-     */
-    NewsService.prototype.getjamunaTvYoutube = function () {
-        return this.http.get(this.jamunaTvYouTubeURL);
+    NewsService.prototype.coronaSymptomsVideos = function () {
+        return this.coronaSymptoms;
     };
-    NewsService.prototype.getIndependentTvYoutube = function () {
-        return this.http.get(this.independentTvYoutubeUrl);
-    };
-    NewsService.prototype.getchannel24Youtube = function () {
-        return this.http.get(this.channel24YoutubeUrl);
-    };
-    /**
-     * Get all the posts
-     */
-    NewsService.prototype.getAllPosts = function (page) {
-        // console.log('NEWS SERVICE PAGE NUM');
-        // console.log(page);
-        var rand = Math.random();
-        // return this.http.get(Global.API_SLUG + 'posts?categories_exclude=262,16&page=' + page + "&per_page=20"+'&force='+rand, { headers: this.headers });
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    // get job posts
-    NewsService.prototype.getAllJobPosts = function (page) {
-        console.log('NEWS SERVICE PAGE NUM');
-        console.log(page);
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?categories=531&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from LifeStyle category
-     * http://ahayder.me/wp-json/wp/v2/posts?
-     */
-    NewsService.prototype.getAllLifeStylePosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=34,35,90,31,61,62,176,182,31,69,68,235&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-  * Get all the posts from Education category
-  * http://ahayder.me/wp-json/wp/v2/posts?
-  */
-    NewsService.prototype.getAllEducationPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=33&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from Sports category
-     * http://ahayder.me/wp-json/wp/v2/posts?
-     */
-    NewsService.prototype.getAllSportsPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] +
-            'posts?tags=19,27,192,53,125,205,109,231,163,49,46,126,140,191,50,193,258,145,48,150,138,190,265,209,93,309&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from Bangladesh category
-     * http://ahayder.me/wp-json/wp/v2/posts?
-     */
-    NewsService.prototype.getAllBangladeshPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=25,13,9,29,21,241,160,133&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from Tech category
-     * http://ahayder.me/wp-json/wp/v2/posts?
-     */
-    NewsService.prototype.getAllTechPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=28,183,252,270,271,332&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from antorjatik category
-     */
-    NewsService.prototype.getAllInternationalPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=32,409,440,410,368,376,406,374,441,380,371,430,367&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from orthoniti category
-     */
-    NewsService.prototype.getAllEconomyPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=22,26,44,256,257,242,170&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    /**
-     * Get all the posts from Binodon category
-     * http://ahayder.me/wp-json/wp/v2/posts?
-     */
-    NewsService.prototype.getAllEntertainmentPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=10,147,55,155,54,154&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllCrimePosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=78,131,132,82,220,170,344,419&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllCulturePosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=267,207,206,111,203,54&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllVividPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=164,178,92,165,230,233,114,67,36,180,154,194,209&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllBusinessPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=264,274,86,87,26,44,263,257,400,242&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllHoroscopePosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=195,196,197&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllPoliticsPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=442,199,134&page=' + page + "&per_page=20" + '&force=' + rand);
-    };
-    NewsService.prototype.getAllShareMarketPosts = function (page) {
-        var rand = Math.random();
-        return this.http.get(_globalSettings__WEBPACK_IMPORTED_MODULE_3__["API_SLUG"] + 'posts?tags=522,30&page=' + page + "&per_page=20" + '&force=' + rand);
+    NewsService.prototype.coronaPreventionVideos = function () {
+        return this.coronaPrevention;
     };
     NewsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], angularfire2_firestore__WEBPACK_IMPORTED_MODULE_5__["AngularFirestore"]])
     ], NewsService);
     return NewsService;
 }());
@@ -1743,7 +1646,16 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    firebase: {
+        apiKey: "AIzaSyDnCHlYLChbJX13qTEkIZR90yd0E2gtPeM",
+        authDomain: "live-tv-channels-ffd06.firebaseapp.com",
+        databaseURL: "https://live-tv-channels-ffd06.firebaseio.com",
+        projectId: "live-tv-channels-ffd06",
+        storageBucket: "live-tv-channels-ffd06.appspot.com",
+        messagingSenderId: "505374819705",
+        appId: "1:505374819705:web:6a38a0f9d4ca1d50fb1ba8"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -1809,7 +1721,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\NODEJS APP\Ionic4\new-international-news\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/ahayder/Work/corona-proj/src/main.ts */"./src/main.ts");
 
 
 /***/ })
