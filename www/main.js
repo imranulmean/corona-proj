@@ -1213,7 +1213,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-split-pane>\n    <ion-menu type=\"overlay\">\n      <ion-content fullscreen>\n        <div class=\"sidemenu-ion-content\">\n          <ion-list class=\"sidemenu-ion-list\">\n\n            <ion-item class=\"sidemenu-ion-list-item\">\n              <img class=\"sidemenu-logo\" src=\"../assets/img/logo-200.png\" height=\"75\">\n            </ion-item>\n\n            <!-- <ion-menu-toggle auto-hide=\"false\">\n\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/home\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"home\"></ion-icon>\n                <ion-label color=\"light\">\n                  সব খবর\n                </ion-label>\n              </ion-item>\n\n            </ion-menu-toggle> -->\n\n            <!-- Item with Children -->\n\n            <ion-item button class=\"sidemenu-ion-list-item\" (click)=\"openMenuList()\" [class.parent-active]=\"subMenu.open\" detail=\"false\"\n              auto-hide=\"false\">\n              <ion-icon slot=\"start\" name=\"arrow-forward\" color=\"light\" *ngIf=\"!subMenu.open\"></ion-icon>\n              <ion-icon slot=\"start\" name=\"arrow-down\" color=\"light\" *ngIf=\"subMenu.open\"></ion-icon>\n              <ion-label color=\"light\">News</ion-label>\n            </ion-item>\n\n            <!-- Children List for clicked Item -->          \n            <ion-list id=\"menuList\" class=\"sidemenu-ion-list-item\" *ngIf=\"subMenu.open\" style=\"height: 0;overflow-y: auto;-webkit-transition: height 2s; transition: height 1s;\">\n              <ion-menu-toggle>\n                <ion-item class=\"sub-item\" *ngFor=\"let s of subRoutes\"  (click)=\"openHome(s.id)\">\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\n                  <ion-label>\n                    {{s.label}}\n                  </ion-label>\n                </ion-item>              \n<!--                 <ion-item class=\"sub-item\"  *ngFor=\"let s of subRoutes\" [routerDirection]=\"'root'\" routerLink={{s.routeOption}}>\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\n                  <ion-label>\n                    {{s.routeName}}\n                  </ion-label>\n                </ion-item> -->\n\n              </ion-menu-toggle>\n            </ion-list>          \n\n\n\n            <ion-menu-toggle>          \n              <!-- <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/sources\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"cube\"></ion-icon>\n                <ion-label color=\"light\">\n                  Source\n                </ion-label>\n              </ion-item> -->\n<!--               <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/livetv\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"tv\"></ion-icon>\n                <ion-label color=\"light\">\n                  পত্রিকা ও লাইভ টিভি\n                </ion-label>\n              </ion-item> -->\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/about\">\n                <ion-icon slot=\"start\" color=\"light\" name=\"md-information-circle\"></ion-icon>\n                <ion-label color=\"light\">\n                  About Us\n                </ion-label>\n              </ion-item>\n\n            </ion-menu-toggle>\n          </ion-list>\n        </div>\n      </ion-content>\n      <ion-footer class=\"sidemenu-ion-footer\">\n        <ion-label class=\"copyright-text\" color=\"dark\">© Dream Diver 2020 | Version 0.0.1</ion-label>\n      </ion-footer>\n    </ion-menu>\n    <ion-router-outlet main></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>"
+module.exports = "<ion-app>\r\n  <ion-split-pane>\r\n    <ion-menu type=\"overlay\">\r\n      <ion-content fullscreen>\r\n        <div class=\"sidemenu-ion-content\">\r\n          <ion-list class=\"sidemenu-ion-list\">\r\n\r\n            <ion-item class=\"sidemenu-ion-list-item\">\r\n              <img class=\"sidemenu-logo\" src=\"../assets/img/logo-200.png\" height=\"75\">\r\n            </ion-item>\r\n\r\n            <!-- <ion-menu-toggle auto-hide=\"false\">\r\n\r\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/home\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"home\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  সব খবর\r\n                </ion-label>\r\n              </ion-item>\r\n\r\n            </ion-menu-toggle> -->\r\n\r\n            <!-- Item with Children -->\r\n\r\n            <ion-item button class=\"sidemenu-ion-list-item\" (click)=\"openMenuList()\" [class.parent-active]=\"subMenu.open\" detail=\"false\"\r\n              auto-hide=\"false\">\r\n              <ion-icon slot=\"start\" name=\"arrow-forward\" color=\"light\" *ngIf=\"!subMenu.open\"></ion-icon>\r\n              <ion-icon slot=\"start\" name=\"arrow-down\" color=\"light\" *ngIf=\"subMenu.open\"></ion-icon>\r\n              <ion-label color=\"light\">News</ion-label>\r\n            </ion-item>\r\n\r\n            <!-- Children List for clicked Item -->          \r\n            <ion-list id=\"menuList\" class=\"sidemenu-ion-list-item\" *ngIf=\"subMenu.open\" style=\"height: 0;overflow-y: auto;-webkit-transition: height 2s; transition: height 1s;\">\r\n              <ion-menu-toggle>\r\n                <ion-item class=\"sub-item\" *ngFor=\"let s of subRoutes\"  (click)=\"openHome(s.id)\">\r\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\r\n                  <ion-label>\r\n                    {{s.label}}\r\n                  </ion-label>\r\n                </ion-item>              \r\n<!--                 <ion-item class=\"sub-item\"  *ngFor=\"let s of subRoutes\" [routerDirection]=\"'root'\" routerLink={{s.routeOption}}>\r\n                  <ion-icon class=\"big\" src=\"{{s.logo}}\"></ion-icon>\r\n                  <ion-label>\r\n                    {{s.routeName}}\r\n                  </ion-label>\r\n                </ion-item> -->\r\n\r\n              </ion-menu-toggle>\r\n            </ion-list>          \r\n\r\n\r\n\r\n            <ion-menu-toggle>          \r\n              <!-- <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/sources\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"cube\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  Source\r\n                </ion-label>\r\n              </ion-item> -->\r\n<!--               <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/livetv\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"tv\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  পত্রিকা ও লাইভ টিভি\r\n                </ion-label>\r\n              </ion-item> -->\r\n              <ion-item class=\"sidemenu-ion-list-item\" [routerDirection]=\"'root'\" routerLink=\"/about\">\r\n                <ion-icon slot=\"start\" color=\"light\" name=\"md-information-circle\"></ion-icon>\r\n                <ion-label color=\"light\">\r\n                  About Us\r\n                </ion-label>\r\n              </ion-item>\r\n\r\n            </ion-menu-toggle>\r\n          </ion-list>\r\n        </div>\r\n      </ion-content>\r\n      <ion-footer class=\"sidemenu-ion-footer\">\r\n        <ion-label class=\"copyright-text\" color=\"dark\">© Dream Diver 2020 | Version 0.0.1</ion-label>\r\n      </ion-footer>\r\n    </ion-menu>\r\n    <ion-router-outlet main></ion-router-outlet>\r\n  </ion-split-pane>\r\n</ion-app>"
 
 /***/ }),
 
@@ -1578,7 +1578,8 @@ var NewsService = /** @class */ (function () {
         this.segmentOptions = [
             { value: "home", id: "0", label: "Home" },
             { value: "symtoms", id: "1", label: "Symtoms" },
-            { value: "prevention", id: "2", label: "Prevention" }
+            { value: "prevention", id: "2", label: "Prevention" },
+            { value: "top", id: "3", label: "Top News" },
         ];
         ///////////////////////////Firebase //////////////////////
         this.coronaCollection = db.collection('coronaDoc');
@@ -1605,6 +1606,14 @@ var NewsService = /** @class */ (function () {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ id: id }, data);
             });
         }));
+        this.coronaTopNewsCollection = db.collection('coronaTopNews');
+        this.coronaTopNews = this.coronaTopNewsCollection.snapshotChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])(function (actions) {
+            return actions.map(function (a) {
+                var data = a.payload.doc.data();
+                var id = a.payload.doc.id;
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ id: id }, data);
+            });
+        }));
         //////////////////////////Firebase ///////////////////////    
     }
     NewsService.prototype.getSegments = function () {
@@ -1618,6 +1627,9 @@ var NewsService = /** @class */ (function () {
     };
     NewsService.prototype.coronaPreventionVideos = function () {
         return this.coronaPrevention;
+    };
+    NewsService.prototype.coronaTopNewsVideos = function () {
+        return this.coronaTopNews;
     };
     NewsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -1721,7 +1733,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ahayder/Work/corona-proj/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! D:\NODEJS APP\Ionic4\corona-proj\src\main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -30,6 +30,8 @@ export class HomePage {
   apiResult:any=[];
 
   channelsGang: Channel[];
+  coronaBanner:any;
+  updateUrl:any;
 
   constructor(
     private newsApi: NewsService,
@@ -94,6 +96,9 @@ export class HomePage {
   goToYoutube(url){
     this.iab.create(url, '_self', 'location=no');
   }
+  gotoUpdateUrl(){
+    this.iab.create(this.updateUrl, '_self', 'location=no');
+  }
 
   clickSegment(segment) {
     this.currentTab = segment;
@@ -117,6 +122,8 @@ export class HomePage {
         if(option==="home"){
           this.newsApi.coronaIntro().subscribe(res => {
             this.channelsGang = res;
+             this.coronaBanner=res[0]['coronaBanner'];
+             this.updateUrl=res[0]['updateUrl'];
             this.prepareCall();                  
           });           
         }
@@ -133,7 +140,14 @@ export class HomePage {
             this.channelsGang = res;
             this.prepareCall();                  
           });          
-        }               
+        }
+
+        else if(option==="top"){
+          this.newsApi.coronaTopNewsVideos().subscribe(res => {
+            this.channelsGang = res;
+            this.prepareCall();                  
+          });          
+        }                        
 
 
         res.onDidDismiss().then((dis) => {

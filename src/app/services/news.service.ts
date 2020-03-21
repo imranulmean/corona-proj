@@ -25,11 +25,14 @@ export class NewsService {
   private coronaCollection: AngularFirestoreCollection<Channel>;
   private coronaSymptomsCollection: AngularFirestoreCollection<Channel>;
   private coronaPreventionCollection: AngularFirestoreCollection<Channel>;
+  private coronaTopNewsCollection: AngularFirestoreCollection<Channel>;
 
 
   private coronaVidoes: Observable<Channel[]>;
   private coronaSymptoms: Observable<Channel[]>;
   private coronaPrevention: Observable<Channel[]>;
+  private coronaTopNews: Observable<Channel[]>; 
+  
   
 
   /////////////////////////////// Firebase  //////////////////////////////
@@ -43,7 +46,8 @@ export class NewsService {
     this.segmentOptions=[
       {value:"home",id:"0",label:"Home"},
       {value:"symtoms",id:"1",label:"Symtoms"},
-      {value:"prevention",id:"2",label:"Prevention"}
+      {value:"prevention",id:"2",label:"Prevention"},
+      {value:"top",id:"3",label:"Top News"},
       
     ];
     ///////////////////////////Firebase //////////////////////
@@ -81,7 +85,19 @@ export class NewsService {
             return { id, ...data };
           });
         })
-      );             
+      );
+
+    this.coronaTopNewsCollection = db.collection<Channel>('coronaTopNews'); 
+
+      this.coronaTopNews = this.coronaTopNewsCollection.snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          });
+        })
+      );                   
     //////////////////////////Firebase ///////////////////////    
 
   }
@@ -97,6 +113,9 @@ export class NewsService {
   }
     coronaPreventionVideos(){
     return this.coronaPrevention;
+  }
+  coronaTopNewsVideos(){
+    return this.coronaTopNews;
   }
 
   
