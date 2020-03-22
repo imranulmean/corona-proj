@@ -44,8 +44,8 @@ export class NewsService {
 
   constructor(public http: HttpClient,db: AngularFirestore) {
     this.segmentOptions=[
-      {value:"home",id:"0",label:"Home"},
-      {value:"symtoms",id:"1",label:"Symtoms"},
+      {value:"home",id:"0",label:"Info"},
+      {value:"symtoms",id:"1",label:"Symptoms"},
       {value:"prevention",id:"2",label:"Prevention"},
       {value:"top",id:"3",label:"Top News"},
       
