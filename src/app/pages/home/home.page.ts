@@ -43,7 +43,12 @@ export class HomePage {
 
     this.segmentOptions = this.newsApi.getSegments();
     this.event.publish('scrollToTop', this.content);
-     this.showAutoHideLoader('home');
+    this.showAutoHideLoader('home');
+    
+    http.get("https://corona.lmao.ninja/all").subscribe((res)=>{
+      console.log(res);
+
+    });    
     
 
   }
