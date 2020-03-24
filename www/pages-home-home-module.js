@@ -57,7 +57,7 @@ var HomePageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar id=\"topToolbar\">\r\n\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n      <img src=\"../../../assets/img/logo-200.png\" height=\"35\">\r\n    </ion-buttons>\r\n\r\n    <ion-title>\r\n      <ion-label color=\"light\">\r\n        <p><b>{{nowTime}}</b></p>\r\n      </ion-label>\r\n    </ion-title>\r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- Default Segment -->\r\n<img src=\"{{coronaBanner}}\" (click)=\"gotoUpdateUrl()\">\r\n  <ion-toolbar id=\"segmentToolbar\" (pan)=\"panToFirstSeg($event)\">\r\n      <ion-segment no-padding value=\"home\" [(ngModel)]=\"category\" scrollable id=\"segment\" > \r\n\r\n          <ion-segment-button id={{result.id}} *ngFor=\"let result of segmentOptions\" \r\n          (click)='showAutoHideLoader(result.value)' no-padding value={{result.value}} >\r\n            <ion-label>{{result.label}}</ion-label>\r\n          </ion-segment-button>      \r\n        <hr class=\"hrs\">\r\n      </ion-segment>\r\n  </ion-toolbar>\r\n\r\n\r\n<ion-content (swipeleft)=\"swipeLeftPress($event)\" (swiperight)=\"swipeRightPress($event)\" class=\"fast\" id=\"ionContent\">\r\n  <!-- Home section -->\r\n  <div scrollable>\r\n        <!-- Home ends -->\r\n    <!-- Videos news -->\r\n    <ion-list>\r\n      <div *ngFor=\"let result of apiResult\">\r\n        <ion-card (click)=goToYoutube(result.url)>\r\n          <ion-card-header>\r\n            <!-- <ion-badge>ভিডিও নিউজ</ion-badge> -->\r\n            <img src=\"{{result.img}}\" />\r\n            <ion-card-subtitle color=\"dark\" class=\"sectionTitle\"\r\n            [innerHtml]=\"result.title\">\r\n            </ion-card-subtitle>\r\n          </ion-card-header>\r\n        </ion-card>\r\n      </div>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar id=\"topToolbar\">\r\n\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n      <img src=\"../../../assets/img/logo-200.png\" height=\"35\">\r\n    </ion-buttons>\r\n\r\n    <ion-title slot=\"end\">\r\n      <ion-label color=\"light\">\r\n        <p><b>{{nowTime}}</b></p>\r\n      </ion-label>\r\n    </ion-title>\r\n\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<!-- Default Segment -->\r\n  <ion-card class=\"ion-no-padding\">\r\n    <ion-grid class=\"ion-no-padding\">\r\n      <ion-row>\r\n        <ion-col size=\"12\" class=\"ion-text-center ion-no-padding\">\r\n            <ion-text color=\"dark\">\r\n              <h3>Coronavirus Cases:</h3>\r\n            </ion-text>\r\n            <ion-button color=\"medium\" fill=\"outline\" size=\"large\" strong=\"true\" shape=\"round\" >\r\n              {{ coronaUpdate.cases | number }}\r\n            </ion-button>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row>\r\n        <ion-col size=\"6\" class=\"ion-text-center ion-no-padding\">\r\n            <ion-text color=\"dark\">\r\n              <h5>Deaths:</h5>\r\n            </ion-text>\r\n            <ion-button color=\"danger\" fill=\"outline\" size=\"large\" strong=\"true\" shape=\"round\">\r\n              {{ coronaUpdate.deaths | number }}\r\n            </ion-button>\r\n        </ion-col>\r\n        <ion-col size=\"6\" class=\"ion-text-center ion-no-padding\">\r\n          <ion-text color=\"dark\">\r\n            <h5>Recovered:</h5>\r\n          </ion-text>\r\n          <ion-button color=\"success\" fill=\"outline\" size=\"large\" strong=\"true\" shape=\"round\">\r\n            {{ coronaUpdate.recovered | number }}\r\n          </ion-button>\r\n      </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </ion-card>\r\n\r\n<p>country:{{coronaUpdateCountry.country}}</p>\r\n<p>cases:{{coronaUpdateCountry.cases}}</p>\r\n<p>todayCases:{{coronaUpdateCountry.todayCases}}</p>\r\n<p>deaths:{{coronaUpdateCountry.deaths}}</p>\r\n<p>todayDeaths:{{coronaUpdateCountry.todayDeaths}}</p>\r\n<p>active:{{coronaUpdateCountry.active}}</p>\r\n\r\n\r\n\r\n  <ion-toolbar id=\"segmentToolbar\" (pan)=\"panToFirstSeg($event)\">\r\n      <ion-segment no-padding value=\"home\" [(ngModel)]=\"category\" scrollable id=\"segment\" > \r\n\r\n          <ion-segment-button id={{result.id}} *ngFor=\"let result of segmentOptions\" \r\n          (click)='showAutoHideLoader(result.value)' no-padding value={{result.value}} >\r\n            <ion-label>{{result.label}}</ion-label>\r\n          </ion-segment-button>      \r\n        <hr class=\"hrs\">\r\n      </ion-segment>\r\n  </ion-toolbar>\r\n\r\n\r\n<ion-content (swipeleft)=\"swipeLeftPress($event)\" (swiperight)=\"swipeRightPress($event)\" class=\"fast\" id=\"ionContent\">\r\n  <!-- Home section -->\r\n  <div scrollable>\r\n        <!-- Home ends -->\r\n    <!-- Videos news -->\r\n    <ion-list>\r\n      <div *ngFor=\"let result of apiResult\">\r\n        <ion-card (click)=goToYoutube(result.url)>\r\n          <ion-card-header>\r\n            <!-- <ion-badge>ভিডিও নিউজ</ion-badge> -->\r\n            <img src=\"{{result.img}}\" />\r\n            <ion-card-subtitle color=\"dark\" class=\"sectionTitle\"\r\n            [innerHtml]=\"result.title\">\r\n            </ion-card-subtitle>\r\n          </ion-card-header>\r\n        </ion-card>\r\n      </div>\r\n    </ion-list>\r\n  </div>\r\n</ion-content>"
 
 /***/ }),
 
@@ -88,6 +88,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/in-app-browser/ngx */ "./node_modules/@ionic-native/in-app-browser/ngx/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ "./node_modules/@ionic-native/native-geocoder/ngx/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -97,27 +101,66 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import { AdmobFreeService } from '../../services/admobfree.service';
+
+
+
 
 var HomePage = /** @class */ (function () {
-    function HomePage(newsApi, event, iab, loadingController, platform, http) {
+    function HomePage(newsApi, event, iab, loadingController, platform, http, nativeGeocoder, geolocation) {
         this.newsApi = newsApi;
         this.event = event;
         this.iab = iab;
         this.loadingController = loadingController;
         this.platform = platform;
         this.http = http;
+        this.nativeGeocoder = nativeGeocoder;
+        this.geolocation = geolocation;
         this.segmentOptions = [];
         this.category = 'home';
         this.apiResult = [];
+        this.coronaUpdate = [];
         this.segmentOptions = this.newsApi.getSegments();
         this.event.publish('scrollToTop', this.content);
         this.showAutoHideLoader('home');
+        this.getCoronaUpdate();
     }
+    HomePage.prototype.getCoronaUpdate = function () {
+        var _this = this;
+        /////////////////// Corona Update News Total/////////// 
+        this.http.get("https://corona.lmao.ninja/all").subscribe(function (res) {
+            //console.log(res);
+            _this.coronaUpdate = res;
+        });
+        /////////////////// Corona Update News Total End///////////    
+        /////////////////// Corona Update News Countrywise///////////        
+        this.geolocation.getCurrentPosition().then(function (resp) {
+            var options = {
+                useLocale: true,
+                maxResults: 5
+            };
+            _this.nativeGeocoder.reverseGeocode(resp.coords['latitude'], resp.coords['longitude'], options)
+                .then(function (result) {
+                _this.http.get('https://corona.lmao.ninja/countries/' + result[0]['countryName']).subscribe(function (res) {
+                    _this.coronaUpdateCountry = res;
+                    console.log(_this.coronaUpdateCountry);
+                });
+            })
+                .catch(function (error) { return console.log(error); });
+        }).catch(function (error) {
+            console.log(error);
+        });
+        /////////////////// Corona Update News Countrywise end///////////    
+    };
+    HomePage.prototype.refreshTime = function () {
+        moment__WEBPACK_IMPORTED_MODULE_8__["locale"]('en');
+        this.nowTime = moment__WEBPACK_IMPORTED_MODULE_8__().format('MMMM Do YYYY');
+    };
     HomePage.prototype.ngOnInit = function () {
-        // if (this.platform.is('cordova')) {
-        //   this.admobFreeService.BannerAd();
-        // }
+        var _this = this;
+        this.refreshTime();
+        setInterval(function () {
+            _this.refreshTime();
+        }, 10000);
     };
     HomePage.prototype.goToSegment = function (buttonNumber, side) {
         var nextButtonNumber = buttonNumber;
@@ -286,7 +329,8 @@ var HomePage = /** @class */ (function () {
             _ionic_native_in_app_browser_ngx__WEBPACK_IMPORTED_MODULE_4__["InAppBrowser"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"],
-            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_6__["NativeGeocoder"],
+            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"]])
     ], HomePage);
     return HomePage;
 }());

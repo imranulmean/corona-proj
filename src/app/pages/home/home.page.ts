@@ -31,6 +31,7 @@ export class HomePage {
   currentTab: any;
   apiResult:any=[];
   coronaUpdate:any=[];
+  coronaUpdateCountry:any;
 
   channelsGang: Channel[];
   coronaBanner:any;
@@ -49,33 +50,42 @@ export class HomePage {
     this.segmentOptions = this.newsApi.getSegments();
     this.event.publish('scrollToTop', this.content);
     this.showAutoHideLoader('home');
-    
-   /////////////////// Corona Update News Total/////////// 
-    http.get("https://corona.lmao.ninja/all").subscribe((res)=>{
-      console.log(res);
-      this.coronaUpdate = res;
-    });
-    /////////////////// Corona Update News Total End///////////    
-
-    /////////////////// Corona Update News Countrywise///////////        
-      let options: NativeGeocoderOptions = {
-       useLocale: true,
-        maxResults: 5
-      };
-
-      this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
-      .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
-      .catch((error: any) => console.log(error));
-
-      this.geolocation.getCurrentPosition().then((resp) => {
-        console.log(resp);
-      }).catch((error) => {
-        console.log(error);
-      });           
-    /////////////////// Corona Update News Countrywise end///////////            
+    this.getCoronaUpdate();
 
   }
 
+    getCoronaUpdate(){
+        
+       /////////////////// Corona Update News Total/////////// 
+        this.http.get("https://corona.lmao.ninja/all").subscribe((res)=>{
+          //console.log(res);
+          this.coronaUpdate = res;
+        });
+        /////////////////// Corona Update News Total End///////////    
+
+        /////////////////// Corona Update News Countrywise///////////        
+
+          this.geolocation.getCurrentPosition().then((resp) => {
+                let options: NativeGeocoderOptions = {
+                 useLocale: true,
+                  maxResults: 5
+                };
+                this.nativeGeocoder.reverseGeocode(resp.coords['latitude'], resp.coords['longitude'], options)
+                .then((result: NativeGeocoderResult[]) => 
+                  {
+                  this.http.get('https://corona.lmao.ninja/countries/'+result[0]['countryName']).subscribe((res)=>{
+                      this.coronaUpdateCountry=res; 
+                      console.log(this.coronaUpdateCountry);       
+                  });                
+
+                  })
+                .catch((error: any) => console.log(error));     
+
+          }).catch((error) => {
+            console.log(error);
+          });           
+        /////////////////// Corona Update News Countrywise end///////////    
+    }
   refreshTime() {
     moment.locale('en');
      this.nowTime = moment().format('MMMM Do YYYY');
