@@ -11,6 +11,8 @@ import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 declare var require: any;
 
@@ -39,17 +41,36 @@ export class HomePage {
     private iab: InAppBrowser,
     public loadingController: LoadingController,
     public platform: Platform,
-    public http: HttpClient) {
+    public http: HttpClient,private nativeGeocoder: NativeGeocoder,
+    private geolocation: Geolocation,) {
 
     this.segmentOptions = this.newsApi.getSegments();
     this.event.publish('scrollToTop', this.content);
     this.showAutoHideLoader('home');
     
+   /////////////////// Corona Update News Total/////////// 
     http.get("https://corona.lmao.ninja/all").subscribe((res)=>{
       console.log(res);
 
-    });    
-    
+    });
+    /////////////////// Corona Update News Total End///////////    
+
+    /////////////////// Corona Update News Countrywise///////////        
+      let options: NativeGeocoderOptions = {
+       useLocale: true,
+        maxResults: 5
+      };
+
+      this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, options)
+      .then((result: NativeGeocoderResult[]) => console.log(JSON.stringify(result[0])))
+      .catch((error: any) => console.log(error));
+
+      this.geolocation.getCurrentPosition().then((resp) => {
+        console.log(resp);
+      }).catch((error) => {
+        console.log(error);
+      });           
+    /////////////////// Corona Update News Countrywise end///////////            
 
   }
 
