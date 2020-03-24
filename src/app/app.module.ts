@@ -21,8 +21,6 @@ import { Injectable } from "@angular/core";
 import { IonicSwipeAllModule } from 'ionic-swipe-all';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 
-// import { AdMobFree } from '@ionic-native/admob-free/ngx';
-// import { AdmobFreeService } from './services/admobfree.service';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
@@ -40,8 +38,6 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     SplashScreen,
     Geolocation,
     NativeGeocoder,
-    // AdMobFree,
-    // AdmobFreeService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     InAppBrowser,
     OneSignal,

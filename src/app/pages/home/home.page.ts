@@ -7,12 +7,12 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { LoadingController } from '@ionic/angular';
 import { IonInfiniteScroll } from '@ionic/angular';
 import { HttpClient,HttpHeaders  } from '@angular/common/http';
-// import { AdmobFreeService } from '../../services/admobfree.service';
 import { Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import * as moment from 'moment';
 
 declare var require: any;
 
@@ -30,10 +30,12 @@ export class HomePage {
   category: any = 'home';
   currentTab: any;
   apiResult:any=[];
+  coronaUpdate:any=[];
 
   channelsGang: Channel[];
   coronaBanner:any;
   updateUrl:any;
+  nowTime:any;
 
   constructor(
     private newsApi: NewsService,
@@ -51,7 +53,7 @@ export class HomePage {
    /////////////////// Corona Update News Total/////////// 
     http.get("https://corona.lmao.ninja/all").subscribe((res)=>{
       console.log(res);
-
+      this.coronaUpdate = res;
     });
     /////////////////// Corona Update News Total End///////////    
 
@@ -74,10 +76,19 @@ export class HomePage {
 
   }
 
+  refreshTime() {
+    moment.locale('en');
+     this.nowTime = moment().format('MMMM Do YYYY');
+  }
+
   ngOnInit() {
-    // if (this.platform.is('cordova')) {
-    //   this.admobFreeService.BannerAd();
-    // }
+
+    this.refreshTime();
+
+    setInterval(() => {
+      this.refreshTime();
+    }, 10000);
+
   }
 
   goToSegment(buttonNumber: number, side: string) {
